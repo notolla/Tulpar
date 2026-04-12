@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env
+.env.local
+*.pyc
+__pycache__/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/models/*.pkl
+backend/data/tulpar.db
+*.log
+.DS_Store

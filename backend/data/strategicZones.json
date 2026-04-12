@@ -1,0 +1,279 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bosphorus",
+        "ad": "İstanbul Boğazı",
+        "name": "İstanbul Boğazı",
+        "type": "maritime_chokepoint",
+        "onemSeviyesi": "Kritik",
+        "importance": "Kritik",
+        "risk_multiplier": 1.8,
+        "aktifUyariSayisi": 2,
+        "aciklama": "Karadeniz-Akdeniz geçiş noktası. Günde ortalama 48.000 gemi geçişi. NATO için stratejik kilit nokta.",
+        "region": "Turkey"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [28.85, 41.35], [29.15, 41.35], [29.20, 41.10],
+          [29.15, 40.90], [28.85, 40.90], [28.80, 41.10],
+          [28.85, 41.35]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "dardanelles",
+        "ad": "Çanakkale Boğazı",
+        "name": "Çanakkale Boğazı",
+        "type": "maritime_chokepoint",
+        "onemSeviyesi": "Kritik",
+        "importance": "Kritik",
+        "risk_multiplier": 1.8,
+        "aktifUyariSayisi": 0,
+        "aciklama": "Ege-Marmara geçişi. Rus deniz kuvvetleri için tek çıkış noktası.",
+        "region": "Turkey"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [26.10, 40.30], [26.50, 40.30], [26.55, 40.00],
+          [26.50, 39.85], [26.10, 39.85], [26.05, 40.00],
+          [26.10, 40.30]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "aegean_fir",
+        "ad": "Ege FIR Sınırı",
+        "name": "Ege FIR Sınırı",
+        "type": "airspace_boundary",
+        "onemSeviyesi": "Yüksek",
+        "importance": "Yüksek",
+        "risk_multiplier": 1.5,
+        "aktifUyariSayisi": 1,
+        "aciklama": "Türkiye-Yunanistan FIR sınırı. Süregelen hava sahası anlaşmazlığı bölgesi.",
+        "region": "Aegean"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [24.0, 41.5], [27.0, 41.5], [27.5, 38.0],
+          [26.5, 36.0], [24.0, 36.0], [23.0, 38.0],
+          [24.0, 41.5]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "eastern_med",
+        "ad": "Doğu Akdeniz",
+        "name": "Doğu Akdeniz",
+        "type": "strategic_maritime",
+        "onemSeviyesi": "Yüksek",
+        "importance": "Yüksek",
+        "risk_multiplier": 1.4,
+        "aktifUyariSayisi": 0,
+        "aciklama": "Doğal gaz keşifleri ve münhasır ekonomik bölge anlaşmazlıkları. Türkiye-Yunanistan-İsrail-Mısır çakışma alanı.",
+        "region": "Mediterranean"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [28.0, 37.0], [36.0, 37.0], [36.5, 33.0],
+          [34.0, 31.0], [31.0, 31.5], [28.0, 33.0],
+          [27.0, 35.5], [28.0, 37.0]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "black_sea_corridor",
+        "ad": "Karadeniz Batı Koridoru",
+        "name": "Karadeniz Batı Koridoru",
+        "type": "conflict_zone",
+        "onemSeviyesi": "Kritik",
+        "importance": "Kritik",
+        "risk_multiplier": 1.9,
+        "aktifUyariSayisi": 3,
+        "aciklama": "Ukrayna-Rusya çatışması. Kızıldeniz benzeri tehdit. Tahıl koridoru mücadelesi. NATO-Rusya gerilim bölgesi.",
+        "region": "Black Sea"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [28.0, 47.0], [38.0, 47.5], [40.0, 45.5],
+          [38.0, 43.0], [28.0, 43.0], [26.5, 44.5],
+          [28.0, 47.0]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ukraine_frontline",
+        "ad": "Ukrayna-Rusya Cephesi",
+        "name": "Ukrayna-Rusya Cephesi",
+        "type": "active_conflict",
+        "onemSeviyesi": "Kritik",
+        "importance": "Kritik",
+        "risk_multiplier": 2.5,
+        "aktifUyariSayisi": 5,
+        "aciklama": "Aktif çatışma bölgesi. Doğu Ukrayna cephesi. Zaporizhzhia, Donbas, Herson bölgeleri. Hava sahası NOTAM ile kapalı.",
+        "region": "Ukraine"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [30.0, 52.5], [40.0, 52.5], [40.5, 46.5],
+          [35.0, 44.5], [30.0, 45.5], [28.0, 48.0],
+          [30.0, 52.5]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "strait_of_hormuz",
+        "ad": "Hürmüz Boğazı",
+        "name": "Hürmüz Boğazı",
+        "type": "maritime_chokepoint",
+        "onemSeviyesi": "Kritik",
+        "importance": "Kritik",
+        "risk_multiplier": 2.2,
+        "aktifUyariSayisi": 2,
+        "aciklama": "Dünya petrol üretiminin %20'si bu boğazdan geçiyor. İran baskısı altında. Tanker el koyma olayları. ABD deniz mevcudiyeti.",
+        "region": "Persian Gulf"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [55.5, 27.0], [57.5, 27.0], [57.8, 25.5],
+          [57.0, 24.8], [55.5, 25.5], [55.2, 26.0],
+          [55.5, 27.0]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "persian_gulf",
+        "ad": "Körfez Bölgesi",
+        "name": "Körfez Bölgesi",
+        "type": "strategic_maritime",
+        "onemSeviyesi": "Yüksek",
+        "importance": "Yüksek",
+        "risk_multiplier": 1.7,
+        "aktifUyariSayisi": 1,
+        "aciklama": "İran-Körfez ülkeleri gerginliği. ABD 5. Filosu mevcudiyeti. İran proxy güçler etkisi.",
+        "region": "Persian Gulf"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [48.0, 30.0], [57.0, 30.0], [57.5, 24.5],
+          [54.0, 22.5], [50.0, 24.0], [47.5, 27.0],
+          [48.0, 30.0]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "israel_gaza",
+        "ad": "İsrail-Gazze Çatışma Bölgesi",
+        "name": "İsrail-Gazze Çatışma Bölgesi",
+        "type": "active_conflict",
+        "onemSeviyesi": "Kritik",
+        "importance": "Kritik",
+        "risk_multiplier": 2.0,
+        "aktifUyariSayisi": 4,
+        "aciklama": "Aktif çatışma. Ben Gurion Havalimanı yönlendirme değişiklikleri. Hava sahası kısıtlamaları. Füze tehdidi.",
+        "region": "Middle East"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [33.5, 33.5], [36.5, 33.5], [36.5, 29.5],
+          [34.0, 29.5], [33.5, 31.0], [33.5, 33.5]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "suez_canal",
+        "ad": "Süveyş Kanalı",
+        "name": "Süveyş Kanalı",
+        "type": "maritime_chokepoint",
+        "onemSeviyesi": "Yüksek",
+        "importance": "Yüksek",
+        "risk_multiplier": 1.6,
+        "aktifUyariSayisi": 0,
+        "aciklama": "Asya-Avrupa deniz ticaretinin %12'si. Husilerin Kızıldeniz saldırıları nedeniyle alternatif güzergahlar kullanılıyor.",
+        "region": "Egypt"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [31.8, 31.5], [32.8, 31.5], [33.0, 27.5],
+          [32.5, 25.0], [31.5, 27.0], [31.5, 30.0],
+          [31.8, 31.5]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "syria_iraq",
+        "ad": "Suriye-Irak Operasyon Bölgesi",
+        "name": "Suriye-Irak Operasyon Bölgesi",
+        "type": "active_conflict",
+        "onemSeviyesi": "Yüksek",
+        "importance": "Yüksek",
+        "risk_multiplier": 1.8,
+        "aktifUyariSayisi": 2,
+        "aciklama": "Rusya, Türkiye, ABD, İran kaynaklı hava operasyonları. İHA ve insansız hava aracı yoğunluğu. Çok aktörlü hava sahası.",
+        "region": "Middle East"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [35.5, 37.5], [45.5, 37.5], [46.0, 32.5],
+          [43.5, 29.5], [39.5, 29.5], [36.0, 32.0],
+          [35.5, 37.5]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kaliningrad_corridor",
+        "ad": "Suwałki Koridoru",
+        "name": "Suwałki Koridoru",
+        "type": "nato_flashpoint",
+        "onemSeviyesi": "Yüksek",
+        "importance": "Yüksek",
+        "risk_multiplier": 1.7,
+        "aktifUyariSayisi": 0,
+        "aciklama": "Rusya'nın Kaliningrad ile Belarus arasındaki NATO toprak koridoru. NATO'nun en savunmasız geçit noktası.",
+        "region": "Baltic"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [20.0, 55.5], [25.0, 55.5], [25.5, 53.5],
+          [22.0, 53.0], [20.0, 54.0], [20.0, 55.5]
+        ]]
+      }
+    }
+  ]
+}

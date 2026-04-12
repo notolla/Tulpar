@@ -1,0 +1,102 @@
+[
+  {
+    "id": "FLT001",
+    "cagriKodu": "THY4521",
+    "lat": 38.4,
+    "lon": 27.1,
+    "irtifa": 11000,
+    "hiz": 820,
+    "yon": 145,
+    "timestamp": "2024-01-15T14:22:00Z",
+    "ucakTipi": "A320",
+    "anomaliSkoru": 72,
+    "riskSeviyesi": "Yüksek",
+    "anomaliNedeni": "Beklenen rota koridorundan sapma tespit edildi.",
+    "bayraklar": ["rota_sapması", "hız_anomalisi"],
+    "rota": [
+      {"lat": 38.2, "lon": 26.8, "timestamp": "2024-01-15T14:12:00Z"},
+      {"lat": 38.3, "lon": 26.9, "timestamp": "2024-01-15T14:17:00Z"},
+      {"lat": 38.4, "lon": 27.1, "timestamp": "2024-01-15T14:22:00Z"}
+    ]
+  },
+  {
+    "id": "FLT002",
+    "cagriKodu": "DLH782",
+    "lat": 39.9,
+    "lon": 32.8,
+    "irtifa": 9500,
+    "hiz": 750,
+    "yon": 90,
+    "timestamp": "2024-01-15T14:25:00Z",
+    "ucakTipi": "B737",
+    "anomaliSkoru": 25,
+    "riskSeviyesi": "Düşük",
+    "anomaliNedeni": "Normal uçuş profili.",
+    "bayraklar": [],
+    "rota": [
+      {"lat": 39.7, "lon": 32.5, "timestamp": "2024-01-15T14:15:00Z"},
+      {"lat": 39.8, "lon": 32.6, "timestamp": "2024-01-15T14:20:00Z"},
+      {"lat": 39.9, "lon": 32.8, "timestamp": "2024-01-15T14:25:00Z"}
+    ]
+  },
+  {
+    "id": "FLT003",
+    "cagriKodu": "AFR666",
+    "lat": 36.8,
+    "lon": 28.3,
+    "irtifa": 12000,
+    "hiz": 880,
+    "yon": 210,
+    "timestamp": "2024-01-15T14:28:00Z",
+    "ucakTipi": "A330",
+    "anomaliSkoru": 85,
+    "riskSeviyesi": "Kritik",
+    "anomaliNedeni": "Stratejik bölge yakınında olağandışı bekleme deseni gözlemlendi.",
+    "bayraklar": ["stratejik_bölge", "bekleme_deseni"],
+    "rota": [
+      {"lat": 36.9, "lon": 28.1, "timestamp": "2024-01-15T14:18:00Z"},
+      {"lat": 36.85, "lon": 28.2, "timestamp": "2024-01-15T14:23:00Z"},
+      {"lat": 36.8, "lon": 28.3, "timestamp": "2024-01-15T14:28:00Z"}
+    ]
+  },
+  {
+    "id": "FLT004",
+    "cagriKodu": "RYR444",
+    "lat": 41.0,
+    "lon": 29.0,
+    "irtifa": 8500,
+    "hiz": 680,
+    "yon": 315,
+    "timestamp": "2024-01-15T14:30:00Z",
+    "ucakTipi": "B738",
+    "anomaliSkoru": 45,
+    "riskSeviyesi": "Orta",
+    "anomaliNedeni": "Anormal irtifa değişimi tespit edildi.",
+    "bayraklar": ["irtifa_anomalisi"],
+    "rota": [
+      {"lat": 40.8, "lon": 28.8, "timestamp": "2024-01-15T14:20:00Z"},
+      {"lat": 40.9, "lon": 28.9, "timestamp": "2024-01-15T14:25:00Z"},
+      {"lat": 41.0, "lon": 29.0, "timestamp": "2024-01-15T14:30:00Z"}
+    ]
+  },
+  {
+    "id": "FLT005",
+    "cagriKodu": "UAE999",
+    "lat": 37.0,
+    "lon": 27.5,
+    "irtifa": 10500,
+    "hiz": 800,
+    "yon": 180,
+    "timestamp": "2024-01-15T14:32:00Z",
+    "ucakTipi": "B777",
+    "anomaliSkoru": 60,
+    "riskSeviyesi": "Yüksek",
+    "anomaliNedeni": "Ani yön değişimi ve hız artışı tespit edildi.",
+    "bayraklar": ["yon_değişimi", "hız_anomalisi"],
+    "rota": [
+      {"lat": 37.2, "lon": 27.3, "timestamp": "2024-01-15T14:22:00Z"},
+      {"lat": 37.1, "lon": 27.4, "timestamp": "2024-01-15T14:27:00Z"},
+      {"lat": 37.0, "lon": 27.5, "timestamp": "2024-01-15T14:32:00Z"}
+    ]
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "ALT001",
+    "tip": "hava",
+    "varlikId": "FLT001",
+    "varlikAd": "THY4521",
+    "baslik": "Rota Sapması Tespit Edildi",
+    "aciklama": "Uçuş beklenen rota koridorundan %38 sapma göstermektedir.",
+    "riskSeviyesi": "Yüksek",
+    "timestamp": "2024-01-15T14:22:00Z",
+    "koordinatlar": {"lat": 38.4, "lon": 27.1},
+    "kategori": "Havacılık"
+  },
+  {
+    "id": "ALT002",
+    "tip": "deniz",
+    "varlikId": "VSL001",
+    "varlikAd": "MV MARMARA",
+    "baslik": "AIS Sinyal Kesintisi",
+    "aciklama": "Kıyı bölgesine yakın AIS sinyal kesintisi ve olağandışı bekleme davranışı.",
+    "riskSeviyesi": "Yüksek",
+    "timestamp": "2024-01-15T14:22:00Z",
+    "koordinatlar": {"lat": 36.8, "lon": 28.3},
+    "kategori": "Denizcilik"
+  },
+  {
+    "id": "ALT003",
+    "tip": "hava",
+    "varlikId": "FLT003",
+    "varlikAd": "AFR666",
+    "baslik": "Stratejik Bölge Aktivitesi",
+    "aciklama": "Stratejik bölge yakınında olağandışı bekleme deseni gözlemlendi.",
+    "riskSeviyesi": "Kritik",
+    "timestamp": "2024-01-15T14:28:00Z",
+    "koordinatlar": {"lat": 36.8, "lon": 28.3},
+    "kategori": "Savunma"
+  },
+  {
+    "id": "ALT004",
+    "tip": "deniz",
+    "varlikId": "VSL003",
+    "varlikAd": "MV KARADENIZ",
+    "baslik": "Kritik Boğaz Girişi Duruşu",
+    "aciklama": "İstanbul Boğazı girişinde uzun süreli duruş ve AIS sinyal kesintisi.",
+    "riskSeviyesi": "Kritik",
+    "timestamp": "2024-01-15T14:28:00Z",
+    "koordinatlar": {"lat": 41.2, "lon": 29.8},
+    "kategori": "Güvenlik"
+  },
+  {
+    "id": "ALT005",
+    "tip": "cok_alanli",
+    "varlikId": "FLT003,VSL001",
+    "varlikAd": "Çok Alanlı Aktivite",
+    "baslik": "Eş Zamanlı Hava-Deniz Anomalisi",
+    "aciklama": "Aynı bölgede eş zamanlı hava ve deniz anomalisi tespit edildi.",
+    "riskSeviyesi": "Kritik",
+    "timestamp": "2024-01-15T14:28:00Z",
+    "koordinatlar": {"lat": 36.8, "lon": 28.3},
+    "kategori": "Bölgesel"
+  },
+  {
+    "id": "ALT006",
+    "tip": "hava",
+    "varlikId": "FLT005",
+    "varlikAd": "UAE999",
+    "baslik": "Ani Yön Değişimi",
+    "aciklama": "Ani yön değişimi ve hız artışı tespit edildi.",
+    "riskSeviyesi": "Yüksek",
+    "timestamp": "2024-01-15T14:32:00Z",
+    "koordinatlar": {"lat": 37.0, "lon": 27.5},
+    "kategori": "Havacılık"
+  }
+]

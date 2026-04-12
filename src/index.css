@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 15 15 20;
+    --foreground: 220 220 220;
+    
+    --card: 20 20 30;
+    --card-foreground: 220 220 220;
+    
+    --popover: 20 20 30;
+    --popover-foreground: 220 220 220;
+    
+    --primary: 0 212 255;
+    --primary-foreground: 0 0 0;
+    
+    --secondary: 30 30 45;
+    --secondary-foreground: 220 220 220;
+    
+    --muted: 25 25 35;
+    --muted-foreground: 150 150 150;
+    
+    --accent: 0 212 255;
+    --accent-foreground: 0 0 0;
+    
+    --destructive: 255 0 64;
+    --destructive-foreground: 255 255 255;
+    
+    --border: 40 40 60;
+    --input: 25 25 35;
+    --ring: 0 212 255;
+    
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 15 15 20;
+    --foreground: 220 220 220;
+    
+    --card: 20 20 30;
+    --card-foreground: 220 220 220;
+    
+    --popover: 20 20 30;
+    --popover-foreground: 220 220 220;
+    
+    --primary: 0 212 255;
+    --primary-foreground: 0 0 0;
+    
+    --secondary: 30 30 45;
+    --secondary-foreground: 220 220 220;
+    
+    --muted: 25 25 35;
+    --muted-foreground: 150 150 150;
+    
+    --accent: 0 212 255;
+    --accent-foreground: 0 0 0;
+    
+    --destructive: 255 0 64;
+    --destructive-foreground: 255 255 255;
+    
+    --border: 40 40 60;
+    --input: 25 25 35;
+    --ring: 0 212 255;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-defense;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-md border border-border/50 shadow-lg;
+  }
+  
+  .glow-cyan {
+    @apply shadow-[0_0_20px_rgba(0,212,255,0.3)] border-cyan border-opacity-50;
+  }
+  
+  .glow-green {
+    @apply shadow-[0_0_20px_rgba(0,255,136,0.3)] border-green border-opacity-50;
+  }
+  
+  .glow-yellow {
+    @apply shadow-[0_0_20px_rgba(255,170,0,0.3)] border-yellow border-opacity-50;
+  }
+  
+  .glow-orange {
+    @apply shadow-[0_0_20px_rgba(255,107,53,0.3)] border-orange border-opacity-50;
+  }
+  
+  .glow-red {
+    @apply shadow-[0_0_20px_rgba(255,0,64,0.3)] border-red border-opacity-50;
+  }
+  
+  .text-glow-cyan {
+    @apply text-cyan drop-shadow-[0_0_10px_rgba(0,212,255,0.5)];
+  }
+  
+  .text-glow-green {
+    @apply text-green drop-shadow-[0_0_10px_rgba(0,255,136,0.5)];
+  }
+  
+  .text-glow-red {
+    @apply text-red drop-shadow-[0_0_10px_rgba(255,0,64,0.5)];
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(20 20 30);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(40 40 60);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(0 212 255 / 0.5);
+}
+
+/* Mapbox GL JS custom styles */
+.mapboxgl-popup {
+  @apply bg-card border border-border;
+}
+
+.mapboxgl-popup-content {
+  @apply bg-card text-foreground p-0 rounded-lg;
+}
+
+.mapboxgl-popup-tip {
+  @apply border-t-card;
+}
+
+.mapboxgl-marker {
+  filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+}

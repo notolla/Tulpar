@@ -1,0 +1,62 @@
+[
+  {
+    "id": "HBR001",
+    "baslik": "Doğu Akdeniz'de deniz tatbikatı duyuruldu",
+    "kaynak": "Savunma Bakanlığı",
+    "timestamp": "2026-04-12T00:15:00Z",
+    "kategori": "Savunma",
+    "bölge": "Doğu Akdeniz",
+    "ozet": "Doğu Akdeniz'de 5 gün sürecek ortak deniz tatbikatı başladı.",
+    "koordinatlar": {"lat": 36.0, "lon": 28.5}
+  },
+  {
+    "id": "HBR002",
+    "baslik": "İstanbul Boğazı'nda gemi trafiği yoğunlaştı",
+    "kaynak": "Kıyı Emniyeti",
+    "timestamp": "2026-04-12T00:25:00Z",
+    "kategori": "Deniz Trafiği",
+    "bölge": "İstanbul Boğazı",
+    "ozet": "Boğaz girişinde beklenmedik yoğunluk nedeniyle alternatif rotalar devreye alındı.",
+    "koordinatlar": {"lat": 41.2, "lon": 29.8}
+  },
+  {
+    "id": "HBR003",
+    "baslik": "Suriye hava sahasında artan uçak hareketliliği",
+    "kaynak": "NATO İstihbaratı",
+    "timestamp": "2026-04-12T00:30:00Z",
+    "kategori": "Hava Trafiği",
+    "bölge": "Suriye",
+    "ozet": "Suriye kuzeyinde askeri uçak hareketliliğinde artış gözlemlendi.",
+    "koordinatlar": {"lat": 35.5, "lon": 36.5}
+  },
+  {
+    "id": "HBR004",
+    "baslik": "Ege'de yabancı savaş uçağı ihlali",
+    "kaynak": "Hava Kuvvetleri",
+    "timestamp": "2026-04-12T00:35:00Z",
+    "kategori": "Hava Sahası İhlali",
+    "bölge": "Ege Denizi",
+    "ozet": "Ege'de hava sahası ihlali yapan yabancı savaş uçağına müdahale edildi.",
+    "koordinatlar": {"lat": 39.0, "lon": 26.0}
+  },
+  {
+    "id": "HBR005",
+    "baslik": "Kıbrıs açıklarında doğalgaz arama çalışmaları",
+    "kaynak": "Enerji Bakanlığı",
+    "timestamp": "2026-04-12T00:40:00Z",
+    "kategori": "Enerji",
+    "bölge": "Doğu Akdeniz",
+    "ozet": "Kıbrıs güneyinde yeni doğalgaz arama sahasında çalışmalar başladı.",
+    "koordinatlar": {"lat": 34.5, "lon": 33.0}
+  },
+  {
+    "id": "HBR006",
+    "baslik": "Ege'de hava savunma sistemleri test ediliyor",
+    "kaynak": "MSB",
+    "timestamp": "2024-01-15T14:15:00Z",
+    "kategori": "Savunma",
+    "bölge": "Ege",
+    "ozet": "Ege'de yeni hava savunma sistemlerinin test atışları yapılıyor.",
+    "koordinatlar": {"lat": 39.0, "lon": 27.5}
+  }
+]

@@ -1,0 +1,105 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "SZ001",
+        "ad": "Ege Denizi",
+        "aciklama": "Stratejik öneme sahip Ege Denizi bölgesi",
+        "onemSeviyesi": "Yüksek",
+        "aktifUyariSayisi": 3
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [23.5, 35.5],
+          [28.5, 35.5],
+          [28.5, 40.5],
+          [23.5, 40.5],
+          [23.5, 35.5]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "SZ002",
+        "ad": "Doğu Akdeniz",
+        "aciklama": "Doğu Akdeniz stratejik bölgesi",
+        "onemSeviyesi": "Kritik",
+        "aktifUyariSayisi": 2
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [28.0, 34.0],
+          [36.0, 34.0],
+          [36.0, 37.0],
+          [28.0, 37.0],
+          [28.0, 34.0]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "SZ003",
+        "ad": "İstanbul Boğazı",
+        "aciklama": "İstanbul Boğazı ve yaklaşım bölgesi",
+        "onemSeviyesi": "Kritik",
+        "aktifUyariSayisi": 2
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [28.5, 40.8],
+          [29.5, 40.8],
+          [29.5, 41.5],
+          [28.5, 41.5],
+          [28.5, 40.8]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "SZ004",
+        "ad": "Çanakkale Boğazı",
+        "aciklama": "Çanakkale Boğazı (Dardanelles) bölgesi",
+        "onemSeviyesi": "Yüksek",
+        "aktifUyariSayisi": 1
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [26.0, 39.8],
+          [27.0, 39.8],
+          [27.0, 40.5],
+          [26.0, 40.5],
+          [26.0, 39.8]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "SZ005",
+        "ad": "Karadeniz Batı Koridoru",
+        "aciklama": "Karadeniz batı seyrüsefer koridoru",
+        "onemSeviyesi": "Orta",
+        "aktifUyariSayisi": 0
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [28.0, 41.0],
+          [32.0, 41.0],
+          [32.0, 44.0],
+          [28.0, 44.0],
+          [28.0, 41.0]
+        ]]
+      }
+    }
+  ]
+}
