@@ -11,6 +11,9 @@ Veri hiyerarşisi:
 from __future__ import annotations
 
 import asyncio
+from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv(Path(__file__).parent / ".env")
 import json
 import logging
 import os
@@ -32,6 +35,11 @@ from efes.mock_data import (
 from efes.opensky_client import default_bounds, fetch_opensky_aircraft
 from ais_collector import ais_collector
 from track_store import track_store
+from gdelt_news_feed import (
+    run_background_task as gdelt_background_task,
+    get_news as gdelt_get_news,
+    force_refresh as gdelt_force_refresh,
+)
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 logger = logging.getLogger(__name__)
@@ -96,9 +104,11 @@ async def lifespan(app: FastAPI):
 
     opensky_task = asyncio.create_task(_opensky_background())
     ais_task     = asyncio.create_task(ais_collector.run_forever())
+    gdelt_task   = asyncio.create_task(gdelt_background_task(cache_layer))
     yield
     opensky_task.cancel()
     ais_task.cancel()
+    gdelt_task.cancel()
     ais_collector.stop()
     await cache_layer.close()
 
@@ -280,6 +290,7 @@ async def api_alerts():
 
     for ac in aircraft:
         if ac.get("anomaly_flag") or ac.get("anomaly_score", 0) >= 25:
+            lat, lon = ac.get("lat", 0), ac.get("lon", 0)
             alerts.append({
                 "id": f"ac-{ac.get('id', 'unk')}",
                 "type": "hava",
@@ -289,7 +300,8 @@ async def api_alerts():
                 "description": ac.get("anomaly_reason", "Anomali tespit edildi."),
                 "risk_level": ac.get("risk_level", "Orta"),
                 "timestamp": ac.get("timestamp", datetime.utcnow().isoformat()),
-                "coordinates": {"lat": ac.get("lat", 0), "lon": ac.get("lon", 0)},
+                "coordinates": {"lat": lat, "lon": lon},
+                "region": _coords_to_region(lat, lon),
                 "category": "hava",
                 "anomaly_score": ac.get("anomaly_score", 0),
                 "flags": ac.get("flags", []),
@@ -297,6 +309,7 @@ async def api_alerts():
 
     for v in vessels:
         if v.get("anomaly_flag") or v.get("anomaly_score", 0) >= 25:
+            lat, lon = v.get("lat", 0), v.get("lon", 0)
             alerts.append({
                 "id": f"vs-{v.get('id', 'unk')}",
                 "type": "deniz",
@@ -306,7 +319,8 @@ async def api_alerts():
                 "description": v.get("anomaly_reason", "Anomali tespit edildi."),
                 "risk_level": v.get("risk_level", "Orta"),
                 "timestamp": v.get("timestamp", datetime.utcnow().isoformat()),
-                "coordinates": {"lat": v.get("lat", 0), "lon": v.get("lon", 0)},
+                "coordinates": {"lat": lat, "lon": lon},
+                "region": _coords_to_region(lat, lon),
                 "category": "deniz",
                 "anomaly_score": v.get("anomaly_score", 0),
                 "flags": v.get("flags", []),
@@ -318,13 +332,45 @@ async def api_alerts():
 
 
 @app.get("/api/news")
-async def api_news(region: Optional[str] = None, category: Optional[str] = None):
-    news = list(_MOCK_NEWS)
-    if region:
-        news = [n for n in news if region.lower() in n.get("region", "").lower()]
+async def api_news(
+    region: Optional[str] = None,
+    category: Optional[str] = None,
+    source: Optional[str] = None,
+    regions: Optional[str] = None,   # virgülle ayrılmış çoklu bölge (anomali filtresi)
+):
+    news = await gdelt_get_news(fallback=[])
     if category:
         news = [n for n in news if category.lower() in n.get("category", "").lower()]
+    if source:
+        news = [n for n in news if source.lower() in n.get("source", "").lower()]
+    if regions:
+        region_list = [r.strip().lower() for r in regions.split(",") if r.strip()]
+        news = [n for n in news if any(r in n.get("region", "").lower() for r in region_list)]
+    elif region:
+        news = [n for n in news if region.lower() in n.get("region", "").lower()]
     return news
+
+
+@app.post("/api/news/refresh")
+async def api_news_refresh():
+    count = await gdelt_force_refresh()
+    return {"status": "ok", "count": count}
+
+
+@app.get("/api/news/debug")
+async def api_news_debug():
+    import gdelt_news_feed as gn
+    from collections import Counter
+    na_result = await gn.fetch_news_from_newsapi()
+    rss_result = await gn.fetch_news_from_rss()
+    return {
+        "newsapi_key_set": bool(os.getenv("NEWSAPI_KEY")),
+        "newsapi_count":   len(na_result)  if isinstance(na_result, list)  else str(na_result),
+        "rss_count":       len(rss_result) if isinstance(rss_result, list) else str(rss_result),
+        "rss_sources":     dict(Counter(n["source"] for n in rss_result)) if isinstance(rss_result, list) else {},
+        "store_count":     len(gn._store),
+        "store_age_s":     int(time.time() - gn._store_ts),
+    }
 
 
 @app.get("/api/vessels/live-count")
@@ -448,6 +494,72 @@ async def api_military_summary(hours: int = 24):
 async def api_military_db_stats():
     """DB kayıt istatistikleri."""
     return track_store.stats()
+
+
+def _coords_to_region(lat: float, lon: float) -> str:
+    """
+    Koordinattan bölge adı çıkar.
+    İsimler gdelt_news_feed._infer_region() çıktısıyla birebir eşleşmeli
+    ki anomali filtresi haberleri doğru eşleştirsin.
+    Sıralama önemli — en küçük/spesifik kutu üstte olmalı.
+    """
+    boxes = [
+        # lat_min, lon_min, lat_max, lon_max
+        # ── Türkiye (Boğaz dahil, Ege/Akdeniz'den önce) ──────────────────────
+        ("Türkiye",         36.0,  26.0,  42.5,  45.0),
+
+        # ── Karadeniz ────────────────────────────────────────────────────────
+        ("Karadeniz",       41.0,  28.0,  46.5,  42.0),
+
+        # ── Ege / Doğu Akdeniz (Doğu sınırı 34°D — İsrail/Suriye başlamadan önce)
+        ("Ege/Akdeniz",     30.0,  18.0,  42.0,  34.0),
+
+        # ── Ukrayna ───────────────────────────────────────────────────────────
+        ("Ukrayna",         44.0,  22.0,  53.0,  40.0),
+
+        # ── Körfez (İran, Irak, körfez ülkeleri, Hürmüz) ─────────────────────
+        ("Körfez",          21.0,  48.0,  31.0,  63.0),
+
+        # ── Kızıldeniz / Yemen ────────────────────────────────────────────────
+        ("Kızıldeniz",      10.0,  32.0,  30.0,  45.0),
+
+        # ── Orta Doğu (İsrail, Suriye, Lübnan, Filistin, Ürdün) ─────────────
+        ("Orta Doğu",       28.0,  34.0,  38.0,  43.0),
+
+        # ── Balkanlar ─────────────────────────────────────────────────────────
+        ("Balkanlar",       40.0,  13.0,  47.0,  23.0),
+
+        # ── NATO/Avrupa ───────────────────────────────────────────────────────
+        ("NATO/Avrupa",     35.0, -10.0,  72.0,  32.0),
+
+        # ── Rusya ─────────────────────────────────────────────────────────────
+        ("Rusya",           50.0,  27.0,  77.0, 180.0),
+
+        # ── Güney Asya ────────────────────────────────────────────────────────
+        ("Güney Asya",       8.0,  60.0,  38.0,  90.0),
+
+        # ── Çin / Tayvan ──────────────────────────────────────────────────────
+        ("Çin/Tayvan",      18.0,  98.0,  53.0, 123.0),
+
+        # ── Kore ──────────────────────────────────────────────────────────────
+        ("Kore",            33.0, 124.0,  44.0, 132.0),
+
+        # ── Japonya / Pasifik ─────────────────────────────────────────────────
+        ("Japonya/Pasifik", 24.0, 123.0,  46.0, 146.0),
+
+        # ── Afrika ────────────────────────────────────────────────────────────
+        ("Afrika",         -35.0, -20.0,  37.0,  52.0),
+
+        # ── ABD / Kuzey Amerika ───────────────────────────────────────────────
+        ("ABD",             25.0,-130.0,  50.0, -65.0),
+
+        # ── Orta Asya ─────────────────────────────────────────────────────────
+        ("Orta Asya",       35.0,  46.0,  55.0,  80.0),
+    ]
+    for name, lat_min, lon_min, lat_max, lon_max in boxes:
+        if lat_min <= lat <= lat_max and lon_min <= lon <= lon_max:
+            return name
+    return "Global"
 
 
 def _alert_title(risk_level: str, entity_type: str) -> str:
